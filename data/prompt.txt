@@ -1,0 +1,18 @@
+Crie um arquivo de dados com o nome denuncias_sinteticas.csv, contendo as colunas id,texto_denuncia,tipo_denuncia,urgencia com 30 registros variados e fictícios.
+
+O contexto será uma análise de denúncias recebidas pelo Disque-Denúncia, relacionadas a diferentes tipos de crimes e situações que estão acontecendo em uma determinada cidade. Os registros serão utilizados para classificação das denúncias por tipo de ocorrência e nível de urgência.
+
+Os relatos devem ser variados e fictícios, simulando diferentes formas de comunicação de uma denúncia. Inclua situações como tráfico de drogas, violência doméstica, ameaça, roubo, furto, porte ilegal de arma, receptação, corrupção, maus-tratos a animais, crime ambiental, vandalismo, perturbação do sossego e outros tipos de ocorrência.
+
+A coluna tipo_denuncia deve indicar a classificação da denúncia, enquanto a coluna urgencia deve indicar o nível de urgência, utilizando somente os valores Baixa, Média ou Alta.
+
+Varie os níveis de urgência de acordo com a gravidade e o contexto de cada relato. Inclua situações sem risco imediato, situações que exigem atenção e também ocorrências com risco iminente à integridade física ou à vida.
+
+Não utilize nomes, endereços ou outros dados pessoais reais. Todos os registros devem ser fictícios.
+
+Exemplo csv:
+
+id;texto_denuncia;tipo_denuncia;urgencia
+1;Comunicante relata movimentação frequente de pessoas em uma residência durante a madrugada, com suspeita de venda de drogas;Tráfico de drogas;Alta
+2;Vizinho informa que um homem estaria ameaçando a companheira dentro da residência e que a situação está acontecendo neste momento;Violência doméstica;Alta
+3;Morador relata que um estabelecimento estaria comprando objetos de procedência suspeita;Receptação;Média

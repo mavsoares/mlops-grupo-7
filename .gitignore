@@ -75,3 +75,29 @@ tmp/
 temp/
 *.tmp
 *.bak
+
+# Airflow
+airflow.db
+airflow.cfg
+logs/
+airflow/logs/
+
+# Airflow local configuration
+airflow-webserver.pid
+airflow-scheduler.pid
+
+# Terraform, caso o projeto também use Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+
+# Secrets
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account.json

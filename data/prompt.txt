@@ -1,4 +1,4 @@
-Crie um arquivo de dados com o nome denuncias_sinteticas.csv, contendo as colunas id,texto_denuncia,tipo_denuncia,urgencia com 30 registros variados e fictícios.
+Crie um arquivo de dados com o nome bos_sinteticos.csv, contendo as colunas id,texto_denuncia,tipo_denuncia,urgencia com 30 registros variados e fictícios.
 
 O contexto será uma análise de denúncias recebidas pelo Disque-Denúncia, relacionadas a diferentes tipos de crimes e situações que estão acontecendo em uma determinada cidade. Os registros serão utilizados para classificação das denúncias por tipo de ocorrência e nível de urgência.
 

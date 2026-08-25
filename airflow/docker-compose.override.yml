@@ -1,0 +1,11 @@
+services:
+  airflow-scheduler:
+    volumes: ["./data:/opt/airflow/data"]
+  airflow-apiserver:
+    volumes: ["./data:/opt/airflow/data"]
+  airflow-worker:
+    volumes: ["./data:/opt/airflow/data"]
+  airflow-triggerer:
+    volumes: ["./data:/opt/airflow/data"]
+  airflow-init:
+    volumes: ["./data:/opt/airflow/data"]

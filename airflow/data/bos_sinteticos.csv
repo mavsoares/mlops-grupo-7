@@ -29,3 +29,11 @@ id;texto_denuncia;tipo_denuncia;urgencia
 28;Morador relata que uma pessoa teria sido abordada na saída de um estabelecimento e teve sua bolsa levada mediante ameaça.;Roubo;Alta
 29;Comunicante informa que um imóvel abandonado estaria sendo utilizado para armazenar objetos possivelmente provenientes de crimes.;Receptação;Média
 30;Denunciante relata pichações e danos recentes em paredes e equipamentos de um espaço público, sem indicação de risco imediato.;Vandalismo;Baixa
+31;  Comunicante relata movimentação suspeita em um estabelecimento.  ;Tráfico de drogas;Alta
+32;;Roubo;Alta
+33;Morador relata situação suspeita em sua residência.; ;Média
+34;Denunciante relata ocorrência ambiental em área próxima ao rio.;Crime ambiental;
+35;COMUNICANTE RELATA PERTURBAÇÃO DO SOSSEGO.;Perturbação do sossego;Baixa
+36;Denunciante relata indivíduo portando objeto suspeito.;Porte ilegal de arma;URGENTE
+37;Morador relata descarte irregular de resíduos.;Crime ambiental;Média
+37;Morador relata descarte irregular de resíduos.;Crime ambiental;Média

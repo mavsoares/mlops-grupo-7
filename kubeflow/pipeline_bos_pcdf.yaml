@@ -1,0 +1,220 @@
+# PIPELINE DEFINITION
+# Name: pipeline-bos-pcdf
+# Description: Pipeline ETL de boletins de ocorrência: extract -> clean -> load.
+# Inputs:
+#    caminho_entrada: str
+#    caminho_saida: str
+components:
+  comp-carregar-relatos:
+    executorLabel: exec-carregar-relatos
+    inputDefinitions:
+      parameters:
+        caminho_saida:
+          parameterType: STRING
+        relatos_json:
+          parameterType: STRING
+    outputDefinitions:
+      parameters:
+        Output:
+          parameterType: NUMBER_INTEGER
+  comp-extrair-relatos:
+    executorLabel: exec-extrair-relatos
+    inputDefinitions:
+      parameters:
+        caminho_entrada:
+          parameterType: STRING
+    outputDefinitions:
+      parameters:
+        Output:
+          parameterType: STRING
+  comp-limpar-relatos:
+    executorLabel: exec-limpar-relatos
+    inputDefinitions:
+      parameters:
+        relatos_json:
+          parameterType: STRING
+    outputDefinitions:
+      parameters:
+        Output:
+          parameterType: STRING
+deploymentSpec:
+  executors:
+    exec-carregar-relatos:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - carregar_relatos
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'pandas'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'kfp==2.17.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef carregar_relatos(\n    relatos_json: str,\n    caminho_saida:\
+          \ str\n) -> int:\n    \"\"\"\n    Grava os dados tratados no CSV de sa\xED\
+          da.\n\n    Equivalente \xE0 task 'load' do Airflow.\n    \"\"\"\n\n    import\
+          \ io\n    import pandas as pd\n\n    df = pd.read_json(\n        io.StringIO(relatos_json)\n\
+          \    )\n\n    df.to_csv(\n        caminho_saida,\n        sep=\";\",\n \
+          \       index=False\n    )\n\n    print(f\"Registros carregados: {len(df)}\"\
+          )\n    print(f\"Arquivo gerado: {caminho_saida}\")\n\n    return len(df)\n\
+          \n"
+        image: python:3.11
+    exec-extrair-relatos:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - extrair_relatos
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'pandas'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'kfp==2.17.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef extrair_relatos(\n    caminho_entrada: str\n) -> str:\n    \"\
+          \"\"\n    L\xEA o CSV de entrada e retorna os dados em formato JSON.\n \
+          \   \"\"\"\n\n    import pandas as pd\n\n    df = pd.read_csv(\n       \
+          \ caminho_entrada,\n        sep=\";\"\n    )\n\n    print(f\"Registros extra\xED\
+          dos: {len(df)}\")\n\n    return df.to_json()\n\n"
+        image: python:3.11
+    exec-limpar-relatos:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - limpar_relatos
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'pandas'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'kfp==2.17.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef limpar_relatos(\n    relatos_json: str\n) -> str:\n    \"\"\"\
+          \n    Limpa e padroniza os dados.\n\n    Equivalente \xE0 task 'clean' do\
+          \ Airflow.\n    \"\"\"\n\n    import io\n    import pandas as pd\n\n   \
+          \ df = pd.read_json(\n        io.StringIO(relatos_json)\n    )\n\n    print(f\"\
+          Registros antes da limpeza: {len(df)}\")\n\n    # --------------------------------------------------------\n\
+          \    # 1. Remover registros com dados obrigat\xF3rios vazios\n    # --------------------------------------------------------\n\
+          \n    for coluna in [\n        \"texto_denuncia\",\n        \"tipo_denuncia\"\
+          ,\n        \"urgencia\"\n    ]:\n        df[coluna] = (\n            df[coluna]\n\
+          \            .fillna(\"\")\n            .astype(str)\n            .str.strip()\n\
+          \        )\n\n    df = df[\n        (df[\"texto_denuncia\"] != \"\") &\n\
+          \        (df[\"tipo_denuncia\"] != \"\") &\n        (df[\"urgencia\"] !=\
+          \ \"\")\n    ]\n\n    # --------------------------------------------------------\n\
+          \    # 2. Padronizar o texto da den\xFAncia\n    # --------------------------------------------------------\n\
+          \n    df[\"texto_denuncia\"] = (\n        df[\"texto_denuncia\"]\n     \
+          \   .str.lower()\n    )\n\n    # --------------------------------------------------------\n\
+          \    # 3. Padronizar os valores de urg\xEAncia\n    # --------------------------------------------------------\n\
+          \n    df[\"urgencia\"] = (\n        df[\"urgencia\"]\n        .str.lower()\n\
+          \    )\n\n    df[\"urgencia\"] = df[\"urgencia\"].replace({\n        \"\
+          alta\": \"Alta\",\n        \"m\xE9dia\": \"M\xE9dia\",\n        \"media\"\
+          : \"M\xE9dia\",\n        \"baixa\": \"Baixa\",\n        \"urgente\": \"\
+          Alta\"\n    })\n\n    # --------------------------------------------------------\n\
+          \    # 4. Remover registros duplicados\n    # --------------------------------------------------------\n\
+          \n    df = df.drop_duplicates()\n\n    print(f\"Registros ap\xF3s a limpeza:\
+          \ {len(df)}\")\n\n    print(\"\\nDados tratados:\")\n    print(df.to_string(index=False))\n\
+          \n    return df.to_json()\n\n"
+        image: python:3.11
+pipelineInfo:
+  description: "Pipeline ETL de boletins de ocorr\xEAncia: extract -> clean -> load."
+  name: pipeline-bos-pcdf
+root:
+  dag:
+    tasks:
+      carregar-relatos:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-carregar-relatos
+        dependentTasks:
+        - limpar-relatos
+        inputs:
+          parameters:
+            caminho_saida:
+              componentInputParameter: caminho_saida
+            relatos_json:
+              taskOutputParameter:
+                outputParameterKey: Output
+                producerTask: limpar-relatos
+        taskInfo:
+          name: carregar-relatos
+      extrair-relatos:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-extrair-relatos
+        inputs:
+          parameters:
+            caminho_entrada:
+              componentInputParameter: caminho_entrada
+        taskInfo:
+          name: extrair-relatos
+      limpar-relatos:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-limpar-relatos
+        dependentTasks:
+        - extrair-relatos
+        inputs:
+          parameters:
+            relatos_json:
+              taskOutputParameter:
+                outputParameterKey: Output
+                producerTask: extrair-relatos
+        taskInfo:
+          name: limpar-relatos
+  inputDefinitions:
+    parameters:
+      caminho_entrada:
+        parameterType: STRING
+      caminho_saida:
+        parameterType: STRING
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.17.0

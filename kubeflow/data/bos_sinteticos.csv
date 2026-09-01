@@ -1,0 +1,39 @@
+id;texto_denuncia;tipo_denuncia;urgencia
+1;Comunicante relata movimentação frequente de pessoas durante a madrugada em uma residência, com suspeita de venda de drogas no local.;Tráfico de drogas;Alta
+2;Vizinho informa que uma pessoa estaria ameaçando a companheira dentro da residência e que a discussão está acontecendo neste momento.;Violência doméstica;Alta
+3;Morador relata que um estabelecimento estaria comprando aparelhos eletrônicos sem comprovação de origem.;Receptação;Média
+4;Comunicante informa que dois indivíduos estariam abordando pedestres e subtraindo celulares em uma área movimentada.;Roubo;Alta
+5;Moradora relata o desaparecimento de uma bicicleta deixada em área comum de um prédio durante a tarde.;Furto;Média
+6;Denunciante afirma ter visto uma pessoa exibindo uma arma de fogo na cintura durante uma discussão em via pública.;Porte ilegal de arma;Alta
+7;Comunicante suspeita que funcionários de um órgão público estejam recebendo valores para acelerar a análise de documentos.;Corrupção;Média
+8;Morador relata que cães permanecem constantemente sem alimentação adequada e em condições precárias de higiene.;Maus-tratos a animais;Média
+9;Denunciante informa que uma área de vegetação estaria sendo desmatada para abertura irregular de um terreno.;Crime ambiental;Média
+10;Comerciante relata que a fachada de seu estabelecimento foi danificada durante a madrugada por pessoas não identificadas.;Vandalismo;Baixa
+11;Morador informa que um imóvel vizinho mantém aparelhos de som em volume muito alto durante a madrugada, com ocorrência frequente.;Perturbação do sossego;Baixa
+12;Comunicante relata que um homem estaria perseguindo uma pessoa conhecida e fazendo ameaças por mensagens e pessoalmente.;Ameaça;Alta
+13;Denunciante informa que uma residência estaria sendo utilizada para armazenar grande quantidade de entorpecentes.;Tráfico de drogas;Alta
+14;Vizinho relata gritos e pedidos de ajuda vindos de uma residência, indicando possível agressão ocorrendo no momento.;Violência doméstica;Alta
+15;Morador afirma que ferramentas foram retiradas de um depósito durante a noite sem autorização do proprietário.;Furto;Média
+16;Comunicante relata que uma pessoa estaria vendendo produtos eletrônicos por valores muito abaixo do mercado e sem apresentar comprovantes.;Receptação;Média
+17;Denunciante informa que um indivíduo teria efetuado disparos para o alto durante uma confraternização.;Disparo de arma de fogo;Alta
+18;Morador relata que veículos estariam sendo desmontados em um imóvel, com suspeita de que algumas peças tenham origem ilícita.;Receptação;Média
+19;Comunicante afirma que servidores estariam utilizando veículos oficiais para atividades particulares com frequência.;Uso irregular de bem público;Baixa
+20;Denunciante relata descarte frequente de resíduos químicos em uma área próxima a um curso d'água.;Crime ambiental;Alta
+21;Morador informa que um grupo estaria depredando bancos, lixeiras e equipamentos de uma praça durante a noite.;Vandalismo;Média
+22;Comunicante relata que uma pessoa estaria sendo ameaçada por dívida e teme que a situação evolua para agressão.;Ameaça;Alta
+23;Denunciante informa que uma motocicleta teria sido levada de uma área de estacionamento sem sinais de arrombamento.;Furto;Média
+24;Vizinho relata que um cachorro permanece acorrentado por longos períodos, sem abrigo adequado e aparentemente ferido.;Maus-tratos a animais;Alta
+25;Morador informa que um bar estaria funcionando com som elevado até altas horas, causando reclamações frequentes na vizinhança.;Perturbação do sossego;Baixa
+26;Comunicante relata que uma pessoa estaria oferecendo vantagem financeira para obter aprovação irregular de um processo administrativo.;Corrupção;Média
+27;Denunciante afirma que indivíduos estariam comercializando drogas em uma praça e abordando pessoas que passam pelo local.;Tráfico de drogas;Alta
+28;Morador relata que uma pessoa teria sido abordada na saída de um estabelecimento e teve sua bolsa levada mediante ameaça.;Roubo;Alta
+29;Comunicante informa que um imóvel abandonado estaria sendo utilizado para armazenar objetos possivelmente provenientes de crimes.;Receptação;Média
+30;Denunciante relata pichações e danos recentes em paredes e equipamentos de um espaço público, sem indicação de risco imediato.;Vandalismo;Baixa
+31;  Comunicante relata movimentação suspeita em um estabelecimento.  ;Tráfico de drogas;Alta
+32;;Roubo;Alta
+33;Morador relata situação suspeita em sua residência.; ;Média
+34;Denunciante relata ocorrência ambiental em área próxima ao rio.;Crime ambiental;
+35;COMUNICANTE RELATA PERTURBAÇÃO DO SOSSEGO.;Perturbação do sossego;Baixa
+36;Denunciante relata indivíduo portando objeto suspeito.;Porte ilegal de arma;URGENTE
+37;Morador relata descarte irregular de resíduos.;Crime ambiental;Média
+37;Morador relata descarte irregular de resíduos.;Crime ambiental;Média
